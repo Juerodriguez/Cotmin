@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta CHARSET="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>DIRECCIÓN DE MINERÍA DE CATAMARCA/ TRÁMITES</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="stilo.css">
+
+
+		<style>
+		
+			* {
+    box-sizing: border-box;
+}
+
+			aside{
+				float:right;width:20%;}
+			 
+			@media screen and (max-width: 768px) {
+  			.menu aside {
+  				float:none;
+        		width: 100%;
+  				}	
+			}
+  			@media screen and (max-width: 768px) {
+  			div.ocultar{
+  				display: none;
+  				}	
+  			}
+  				
+			section{
+				float:left;width:78%;}
+
+			@media screen and (max-width: 768px) {
+  			.cuerpo section {
+  				float:none;
+        		width: 100%;
+  				}	
+			}
+			@media (min-width: 1065px){
+              .form-notas{
+              				margin-top: 0px;
+						    display: inline-block;
+						    width: 100%;
+						    vertical-align: middle;
+						    line-height: 30px;
+
+						}
+			}
+
+			@media (min-width: 768px){
+              .form-notas2{
+						   
+						    width: 100%;
+						    line-height: 10px;
+						    text-align: absolute;
+						}
+			}
+
+			h6{ text-align: center; 
+				font-size: 100%;
+				color:#032037;
+				font-family: georgia;
+				margin-top: 0px;
+    			margin-bottom: 0px;}
+			h3 {
+			    margin-top: 0px;
+			    margin-bottom: 0px;}
+			.tam{
+				width: 25%;
+			}
+			
+	    </style>
+	
+	</head>
+	<body>
+		
+			<hr>
+			<div class="flex-container">
+				<div style="flex-grow: 2">
+	       			<h3> CONSULTA DE TRÁMITE</h3>
+	       		</div>
+	       		<div style="flex-grow: 7">
+					<div class="container,boxmodel5">
+	  
+	  					<form class="form-inline" action="/action_page.php">
+	   					 	<div class="form-group">
+	     						<label for="Usuario"></label>
+	      						<input type="text" class="form-control" id="text" placeholder="Usuario" name="Usuario">
+	   					 	</div>
+	    				 	<div class="form-group">
+	     						<label for="pwd"></label>
+	      						<input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd">
+	    					</div>
+	    					<button type="submit" class="btn btn-info">Ingresar</button><!--este botón llevara al link donde el usuario registrado podra hacer la consulta de expediente en la base de datos-->
+	  					</form>
+					</div>
+				</div>	
+			</div>		
+			<hr>
+
+	   
+		<div class="cuerpo">
+		<section>
+						
+
+				       
+					<div class="boxmodel0">
+						 	
+						 	Ingrese el detalle de su trámite<br><br><br>	
+							<form class="form-inline form-notas" action="/action_page.php">
+
+								<label for="numnota">N:</label><br>
+								<input type="number" class="form-control form-notas2" name="numnota"  required=""><br>
+
+								<label for="año">Año:</label><br>
+								<input type="number" class="form-control tam form-notas2" name="año" required=""><br>
+								
+								<h2>				
+								<input type="button" class="btn btn-info" value="BUSCAR">
+								</h2>
+							</form>
+	   				</div>
+	   				
+
+				<a href="consultar.html" class="btn btn-info"> 
+				<span class="glyphicon glyphicon-search"></span> CONSULTA DE BASE DE DATOS 
+				</a> <!-- enlace provisorio hasta ver el registro de usuarios y verificacion -->
+
+		</section>
+	</div>
+	<div class="menu">
+		<aside>
+
+			<div class="noimg">	
+			
+			<a href="Registrarse.html" class="btn btn-info">REGISTRARSE</a> <!--si no es usuario deberá registrarse-->
+			<br>
+				<div class="bot">
+			<a href="tramites.html" class="btn btn-info">
+
+				GUIA DE TRÁMITES <br><img src="guia.png" alt="guia de trámites" width=100px height=100px />
+			</a>		
+			<br>
+			<a href="comprobantePlazoFijo.pdf" class="btn btn-info">				
+					
+					MODELOS DE NOTAS <br><img src="iconopdf.png" alt="modelo de notas" width=105px height=105px /> 
+			</a>
+			</div>
+			<br>
+			</div>
+		</aside>
+	</div>
+	<div class="ocultar">
+		<footer>
+			<div class="absolute">
+			<img src="logo.png" alt="logo" style="width:20%" /><br>
+			<h6> 2018 Dirección Provincial de Minería<br>Provincia de Catamarca-Argentina</h6>
+		</div>
+		</footer>
+	</div>
+	</body>
+</html>

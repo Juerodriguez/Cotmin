@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+    <style>
+		body { background-color:lightblue;}
+		.boxmodel{
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;}
+		.boxmodel2{
+			background: rgba(7, 79, 107, 0.3);
+			color:white;
+			border: 1px solid #6F90A2;
+			border-radius: 15px;
+			width:90%;
+			height: 300px;
+			text-align: center;
+
+			}
+		@media (max-width: 768px){
+					div.boxmodel2{
+						height: 480px;
+						line-height: 40px;
+						}
+				}
+		h2 {text-align: center;
+			color:white;
+			font-family: georgia;}
+
+		li {list-style: none;
+			font-family: georgia;}
+
+
+		@media (max-width: 768px){
+			.form-inline{
+				width: 60%;
+				display: inline-block;
+			    width: auto;
+			    vertical-align: middle;
+			}
+		}
+		@media (max-width: 768px){
+			.form-control{
+				width: 60%;
+				}
+		}
+	</style>
+
+
+		<h2>BASE DE DATOS DE EXPEDIENTES</h2>
+		<div class="boxmodel">
+		<div class="boxmodel2">
+
+			<h3>CONSULTA WEB</h3><br>
+
+			<div class="container">
+
+
+
+
+		  		<div class="tab-content">
+					{{tramite}}
+
+		  		</div>
+			</div>
+		<br>
+		<a href="index.html" class="btn btn-info"> VOLVER </a>
+		</div>
+	</div>
+{% endblock %}
