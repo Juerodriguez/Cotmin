@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+		
+<form action="/registro/" method="POST">
+ {% csrf_token %}
+ {{form.as_p}}
+ <button>
+  Registrar
+ </button>
+</form>
+
+
+
+{% endblock %}

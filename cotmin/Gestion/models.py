@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Tramites(models.Model):
     """llave foranea a Tipo de tramites, si elimino un tipo de tramite se eliminaran todos los tramites vinculados"""
