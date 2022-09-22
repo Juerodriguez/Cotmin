@@ -32,7 +32,7 @@ def consulta_realizada(request):
             'tramite': tramite
         })
     except:
-        return redirect(request, 'consultar.html', {
+        return redirect('consulta', {
             'error': 'Tramite no encontrado'
         })
 

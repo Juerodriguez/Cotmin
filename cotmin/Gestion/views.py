@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.http import HttpResponse
 
@@ -58,3 +58,39 @@ def register(request):
             'form': UserCreationForm,
             'error': "Las contraseñas no coinciden"
         })
+
+
+def signout(request):
+    """
+    Controlador para salir de la aplicacion
+
+    :param request:
+    :return:
+    """
+    logout(request)
+    return redirect('home')
+
+
+def signin(request):
+    """
+    Controlador para ingresar a la aplicacion
+
+    :param request:
+    :return:
+    """
+
+    if request.method == "GET":
+        return render(request, 'signin.html', {
+            'form': AuthenticationForm,
+        })
+    else:
+        user = authenticate(request,
+                            username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'signin.hmtl', {
+                'form': AuthenticationForm,
+                'error': "Usuario o contraseña incorrecta"
+            })
+        else:
+            login(request, user)
+            return redirect('dashboard')

@@ -16,16 +16,17 @@
         <a class="navbar-brand" href="#">MinTramites</a>
 
           <div class="nav">
-            <a class="nav-link active" aria-current="page" href="home">Inicio</a>
-            <a class="nav-link" href="dashboard">Panel</a>
+            <a class="nav-link active" aria-current="page" href="/manager/home">Inicio</a>
+            <a class="nav-link" href="/manager/dashboard">Panel</a>
 
             {% if user.is_authenticated %}
 
-            <a class="nav-link" href="logout">Salir</a>
+            <a class="nav-link" href="/manager/salir">Salir</a>
 
             {% else %}
 
-            <a class="nav-link" href="register">Registro</a>
+            <a class="nav-link" href="/manager/registro">Registro</a>
+            <a class="nav-link" href="/manager/ingresar">Ingresar</a>
 
             {% endif %}
 

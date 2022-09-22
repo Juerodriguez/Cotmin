@@ -2,11 +2,11 @@
 
 {% block body %}
 		
-<form action="/registro/" method="POST">
+<form method="POST">
  {% csrf_token %}
  {{form.as_p}}
  <button>
-  Registrar
+  Ingresar
  </button>
 </form>
 
