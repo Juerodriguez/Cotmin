@@ -1,15 +1,14 @@
 {% extends "layout/base.html" %}
 
 {% block body %}
-		
-<form method="POST">
- {% csrf_token %}
+{{error}}
+<form action="" method="POST">
+    {% csrf_token %}
+
  {{form.as_p}}
  <button>
-  Registrar
+  Crear
  </button>
 </form>
-
-
 
 {% endblock %}

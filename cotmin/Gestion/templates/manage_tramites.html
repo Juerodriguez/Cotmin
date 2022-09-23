@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+
+{% block body %}
+
+<div>
+    <ul>
+        {% for tramite in tramites %}
+        <li>
+            <p>{{tramite.number}}</p>
+            <p>{{tramite.tipo}}</p>
+            <p>{{tramite.user.username}}</p>
+            <p>{{tramite.date_created}}</p>
+            <p>{{tramite.estado}}</p>
+            <p>{{tramite.nota_by_admin}}</p>
+
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <button>
+        Crear
+    </button>
+    <button>
+        Modificar
+    </button>
+    <button>
+        Borrar
+    </button>
+</div>
+
+
+{% endblock %}

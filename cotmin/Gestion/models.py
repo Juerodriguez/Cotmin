@@ -13,7 +13,7 @@ class Tramites(models.Model):
     llave foranea a Tipo de tramites, si elimino un tipo de tramite se eliminaran todos los tramites vinculados
     """
     number = models.PositiveIntegerField(primary_key=True, unique=True)
-    date_created = models.DateTimeField(auto_created=True)
+    date_created = models.DateTimeField(auto_now_add=True)
     date_completed = models.DateTimeField(null=True)
     # file = models.FileField(upload_to='archivos/%Y/%m')
     tipo = models.ForeignKey('TipoTramites', null=False, blank=False, on_delete=models.CASCADE)

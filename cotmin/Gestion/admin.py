@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Tramites, TipoTramites
 
-# Register your models here.
+admin.site.register(Tramites)
+admin.site.register(TipoTramites)

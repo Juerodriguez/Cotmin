@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.http import HttpResponse
+from .form import TramiteForm
+from .models import Tramites
 
 
 def home(request):
@@ -17,15 +19,48 @@ def home(request):
     return render(request, 'index.html')
 
 
-def panel(request):
+def dashboard(request):
     """
 
     :param request:
     :return:
 
-    Vista que muestra el panel principal una vez logeado el usuario
+    Controlador que muestra el panel principal una vez logeado el usuario
     """
-    return render(request, 'dashboard.html')
+    return render(request, 'panel.html')
+
+
+def manage_tramite(request):
+    tramites = Tramites.objects.all()
+    return render(request, 'manage_tramites.html', {
+        'tramites': tramites
+    })
+
+
+def create_tramite(request):
+    if request.method == "GET":
+        return render(request, 'create_tramites.html', {
+            'form': TramiteForm
+        })
+    elif request.method == "POST":
+        if isinstance(request.user, User):
+            try:
+                form = TramiteForm(request.POST)
+                new_tramite = form.save(commit=False)
+                new_tramite.user = request.user
+                new_tramite.save()
+                return redirect("create_tramite")
+            except ValueError:
+                return render(request, 'create_tramites.html', {
+                    'form': TramiteForm,
+                    'error': "Ingresar valores correctos"
+                })
+
+        else:
+            return redirect('signin')
+
+
+
 
 
 def register(request):
@@ -48,7 +83,7 @@ def register(request):
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('dashboard')
+                return redirect('manage_tramite')
             except IntegrityError:
                 return render(request, 'registro.html', {
                             'form': UserCreationForm,
@@ -93,4 +128,4 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('manage_tramite')
