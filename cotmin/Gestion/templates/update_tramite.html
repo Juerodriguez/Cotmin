@@ -1,0 +1,20 @@
+{% extends "layout/base.html" %}
+
+{% block body %}
+{{error}}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+ <button>
+  Actualizar
+ </button>
+</form>
+
+<form action="{% url 'completed_tramite' tramite.number %}" method="POST">
+        {% csrf_token %}
+ <button>
+  Revisado
+ </button>
+</form>
+
+{% endblock %}

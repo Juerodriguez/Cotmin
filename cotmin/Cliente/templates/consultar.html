@@ -3,17 +3,11 @@
 {% block body %}
 
 
-		<h2>BASE DE DATOS DE EXPEDIENTES</h2>
-		<div class="boxmodel">
+	<h2>BASE DE DATOS DE EXPEDIENTES</h2>
+	<div class="boxmodel">
 		<div class="boxmodel2">
-
 			<h3>CONSULTA WEB</h3><br>
-
 			<div class="container">
-
-
-
-
 		  		<div class="tab-content">
 					<form action="/consulta_result/" method="POST">
 						{% csrf_token %}
@@ -22,10 +16,8 @@
 							Consultar
 						</button>
 					</form>
-
 		  		</div>
 			</div>
-		<br>
 		<a href="index.html" class="btn btn-info"> VOLVER </a>
 		</div>
 	</div>

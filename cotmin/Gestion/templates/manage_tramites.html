@@ -2,32 +2,88 @@
 
 {% block body %}
 
-<div>
-    <ul>
-        {% for tramite in tramites %}
-        <li>
-            <p>{{tramite.number}}</p>
-            <p>{{tramite.tipo}}</p>
-            <p>{{tramite.user.username}}</p>
-            <p>{{tramite.date_created}}</p>
-            <p>{{tramite.estado}}</p>
-            <p>{{tramite.nota_by_admin}}</p>
 
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-<div>
-    <button>
-        Crear
-    </button>
-    <button>
-        Modificar
-    </button>
-    <button>
-        Borrar
-    </button>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table caption-top">
+            <caption>Tramites Pendientes</caption>
+            <thead>
+                <tr>
+                  <th scope="col">Expediente</th>
+                    <th scope="col">Tipo</th>
+                  <th scope="col">Creado por</th>
+                  <th scope="col">Fecha de creacion</th>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tramite in tramites %}
+                 {% if tramite.estado != "R" %}
+                <tr>
+                  <td>
+                      <a href="{% url 'detail_tramite' tramite.number %}">
+                            <p>{{tramite.number}}</p>
+                      </a>
+                  </td>
+                  <td>{{tramite.tipo}}</td>
+                  <td>{{tramite.user.username}}</td>
+                    <td>{{tramite.date_created}}</td>
+                  <td><p>{{tramite.solicitante}}</p></td>
+                  <td><p>{{tramite.estado}}</p></td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <form action="/manager/tramites/nuevo" method="GET">
+            {% csrf_token %}
+            <button>
+                Crear Nuevo Tramite
+            </button>
+        </form>
+    </div>
 </div>
 
+<div class="container">
+    <div class="table-responsive">
+        <table class="table caption-top">
+            <caption>Tramites Completados</caption>
+            <thead>
+                <tr>
+                  <th scope="col">Expediente</th>
+                    <th scope="col">Tipo</th>
+                  <th scope="col">Creado por</th>
+                  <th scope="col">Fecha de creacion</th>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tramite in tramites %}
+                 {% if tramite.estado == "R" %}
+                <tr>
+                  <td>
+                      <a href="{% url 'detail_tramite' tramite.number %}">
+                            <p>{{tramite.number}}</p>
+                      </a>
+                  </td>
+                  <td>{{tramite.tipo}}</td>
+                  <td>{{tramite.user.username}}</td>
+                    <td>{{tramite.date_created}}</td>
+                  <td><p>{{tramite.solicitante}}</p></td>
+                  <td><p>{{tramite.estado}}</p></td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}

@@ -11,31 +11,38 @@
     <link rel="stylesheet" href="{% static '/css/stilo.css' %}">
   </head>
   <body>
-    <nav class="navbar" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">MinTramites</a>
 
-          <div class="nav">
-            <a class="nav-link active" aria-current="page" href="/manager/home">Inicio</a>
-
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="#">CotMin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
-
-            <a class="nav-link" href="/manager/panel">Panel</a>
-            <a class="nav-link" href="/manager/tramites">Tramites</a>
-            <a class="nav-link" href="/manager/tramites/nuevo">Nuevo Tramite</a>
-            <a class="nav-link" href="/manager/salir">Salir</a>
-
+            <li class="nav-item">
+              <a class="nav-link" href="/manager/tramites">Tramites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/manager/tramites/nuevo">Nuevo Tramite</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/manager/salir">Salir</a>
+            </li>
             {% else %}
-
-            <a class="nav-link" href="/manager/registro">Registro</a>
-            <a class="nav-link" href="/manager/ingresar">Ingresar</a>
-
+            <li class="nav-item">
+              <a class="nav-link" href="/manager/registro">Registro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/manager/ingresar">Ingresar</a>
+            </li>
             {% endif %}
-
-          </div>
-
+          </ul>
+        </div>
       </div>
     </nav>
+
     {% block body %}
 
     {% endblock %}

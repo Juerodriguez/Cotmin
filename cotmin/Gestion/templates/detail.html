@@ -1,0 +1,35 @@
+{% extends "layout/base.html" %}
+
+{% block body %}
+
+<div>
+    <h1> Tramite detalle</h1>
+    <div>
+        <p>N° de Expediente: {{tramite.number}}</p>
+        <p>Tipo de tramite: {{tramite.tipo}}</p>
+        <p>Responsable solicitante: {{tramite.solicitante}}</p>
+        <p>Creado por: {{tramite.user.username}}</p>
+        <p>Fecha de creacion: {{tramite.date_created}}</p>
+        <p>Fecha de completado: {{tramite.date_completed}}</p>
+        <p>Completado por: {{tramite.completed_by}}</p>
+        <p>Estado {{tramite.estado}}</p>
+        <p>Nota: {{tramite.nota_by_admin}}</p>
+    </div>
+</div>
+<div>
+    <form action="{% url 'update_tramite' tramite.number %}" method="GET">
+        {% csrf_token %}
+        <button>
+            Modificar
+        </button>
+    </form>
+    <form action="{% url 'delete_tramite' tramite.number %}" method="GET">
+        {% csrf_token %}
+        <button>
+            Borrar
+        </button>
+    </form>
+</div>
+
+
+{% endblock %}

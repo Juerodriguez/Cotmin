@@ -13,8 +13,10 @@ class Tramites(models.Model):
     llave foranea a Tipo de tramites, si elimino un tipo de tramite se eliminaran todos los tramites vinculados
     """
     number = models.PositiveIntegerField(primary_key=True, unique=True)
+    solicitante = models.CharField(max_length=255, default="Sin datos")
     date_created = models.DateTimeField(auto_now_add=True)
     date_completed = models.DateTimeField(null=True)
+    completed_by = models.CharField(max_length=255, null=True)
     # file = models.FileField(upload_to='archivos/%Y/%m')
     tipo = models.ForeignKey('TipoTramites', null=False, blank=False, on_delete=models.CASCADE)
     estado = models.CharField(max_length=1, choices=ESTADO_TRAMITE, default="P")
@@ -30,5 +32,4 @@ class TipoTramites(models.Model):
     tipo = models.CharField(max_length=255)
 
     def __str__(self):
-        txt = "Tipo de Tramite: {0}"
-        return txt.format(self.tipo)
+        return self.tipo
