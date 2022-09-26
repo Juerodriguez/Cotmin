@@ -2,13 +2,21 @@
 
 {% block body %}
 {{error}}
-<form action="" method="POST">
-    {% csrf_token %}
 
- {{form.as_p}}
- <button>
-  Crear
- </button>
-</form>
+<main class ="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto my-5">
+            <form action="" method="POST" class="card card-body">
+                {% csrf_token %}
+                <h1>Crear Trámite</h1>
+
+                 {{form}}
+                 <button class="btn btn-primary">
+                  Crear
+                 </button>
+            </form>
+        </div>
+    </div>
+</main>
 
 {% endblock %}
