@@ -16,5 +16,10 @@ class TramiteForm(forms.ModelForm):
         }
 
 
+class FilterForm(forms.Form):
+    number = forms.CharField(label="N° de Expediente", max_length=200)
+
+
+
 
 

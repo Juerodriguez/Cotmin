@@ -116,6 +116,12 @@ def delete_tramite(request, tramite_id):
         return redirect('manage_tramite')
 
 
+@login_required
+def search_tramite(request):
+    tramite = Tramites.objects.filter(pk=request.POST["number"]).first()
+    return redirect('detail_tramite', tramite.number)
+
+
 def register(request):
     """
 

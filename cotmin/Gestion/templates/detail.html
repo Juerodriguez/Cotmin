@@ -15,21 +15,22 @@
         <p>Estado {{tramite.estado}}</p>
         <p>Nota: {{tramite.nota_by_admin}}</p>
     </div>
+    <div class="d-flex justify-content-md-center my-2">
+        <form action="{% url 'update_tramite' tramite.number %}" method="GET">
+            {% csrf_token %}
+            <button class="btn btn-primary">
+                Modificar
+            </button>
+        </form>
+        <form action="{% url 'delete_tramite' tramite.number %}" method="GET">
+            {% csrf_token %}
+            <button class="btn btn-primary">
+                Borrar
+            </button>
+        </form>
+    </div>
 </div>
-<div>
-    <form action="{% url 'update_tramite' tramite.number %}" method="GET">
-        {% csrf_token %}
-        <button>
-            Modificar
-        </button>
-    </form>
-    <form action="{% url 'delete_tramite' tramite.number %}" method="GET">
-        {% csrf_token %}
-        <button>
-            Borrar
-        </button>
-    </form>
-</div>
+
 
 
 {% endblock %}
