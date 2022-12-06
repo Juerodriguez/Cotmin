@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Gestion', '0002_delete_users_remove_tramites_date_and_more'),
+        ('gestion', '0002_delete_users_remove_tramites_date_and_more'),
     ]
 
     operations = [

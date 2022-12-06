@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .form import ConsultForm
-#from ..Gestion.models import Tramites, TipoTramites
+from gestion.models import Tramites, TipoTramites
+from django.http import Http404
 
 
 def index(request):
@@ -14,6 +15,7 @@ def consultar(request):
     :param request:
     :return:
     """
+    # TODO: Mejorar mostrando opciones de tipo de tramites
     return render(request, 'consultar.html', {
         'form': ConsultForm()
     })
@@ -26,15 +28,14 @@ def consulta_realizada(request):
     :param request:
     :return:
     """
+    # TODO: Mostrar a profundidad todo el detalle, en especial el estado del tramite
     try:
         tramite = Tramites.objects.get(tipo=request.POST["tipo"], number=request.POST["number"])
         return render(request, 'consulta_result.html', {
             'tramite': tramite
         })
-    except:
-        return redirect('consulta', {
-            'error': 'Tramite no encontrado'
-        })
+    except Tramites.DoesNotExist:
+        raise Http404("Este tramite no existe")
 
 
 def tramites(request):

@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateField()),
                 ('estado', models.BooleanField()),
                 ('nota_by_admin', models.TextField()),
-                ('tipo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Gestion.tipotramites')),
+                ('tipo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gestion.tipotramites')),
             ],
         ),
     ]
