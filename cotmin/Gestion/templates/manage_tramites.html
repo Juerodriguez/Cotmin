@@ -13,25 +13,50 @@
             </div>
             <div class="m-2">
                 <input type="text" placeholder="Filtrar por N° de nota" id="number" name="number">
+                <button class="btn btn-primary"> Buscar </button>
             </div>
         </form>
-        <div class="table-responsive border">
+        <div class="table-responsive border h-25 w-100 overflow-scroll">
             <table class="table caption-top">
                 <caption class="text-center my-2">
                     <strong>Tramites Pendientes</strong>
                 </caption>
                 <thead>
                     <tr>
-                      <th scope="col">N° de Nota</th>
-                        <th scope="col">Tipo</th>
-                      <th scope="col">Creado por</th>
-                      <th scope="col">Fecha de creacion</th>
-                      <th scope="col">Solicitante</th>
-                      <th scope="col">Estado</th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='number' %}">
+                                <p>N° de Nota</p>
+                          </a>
+                      </th>
+                        <th scope="col">
+                            <a href="{% url 'select_order' order='tipo' %}">
+                                <p>Tipo</p>
+                          </a>
+                        </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='user' %}">
+                                <p>Creado por</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='date_created' %}">
+                                <p>Fecha de creacion</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='solicitante' %}">
+                                <p>Solicitante</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='estado' %}">
+                                <p>Estado</p>
+                          </a>
+                      </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for tramite in tramites %}
+                    {% for tramite in tramites_list %}
                      {% if tramite.estado != "R" %}
                     <tr>
                       <td>
@@ -63,23 +88,57 @@
 
 <div class="container">
     <div class="card card-body my-2">
-        <div class="table-responsive border">
+        <form class="d-flex justify-content-end my-2 border" action="{% url 'search_tramite' %}" method="POST">
+            {% csrf_token %}
+            <div class="m-2">
+                <label>Filtrar</label>
+            </div>
+            <div class="m-2">
+                <input type="text" placeholder="Filtrar por N° de nota" id="number" name="number">
+                <button class="btn btn-primary"> Buscar </button>
+            </div>
+        </form>
+        <div class="table-responsive border h-25 w-100 overflow-scroll">
             <table class="table caption-top">
                 <caption class="text-center my-2">
                     <strong>Tramites Completados</strong>
                 </caption>
                 <thead>
                     <tr>
-                      <th scope="col">Expediente</th>
-                        <th scope="col">Tipo</th>
-                      <th scope="col">Creado por</th>
-                      <th scope="col">Fecha de creacion</th>
-                      <th scope="col">Solicitante</th>
-                      <th scope="col">Estado</th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='number' %}">
+                                <p>N° de Nota</p>
+                          </a>
+                      </th>
+                        <th scope="col">
+                            <a href="{% url 'select_order' order='tipo' %}">
+                                <p>Tipo</p>
+                          </a>
+                        </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='user' %}">
+                                <p>Creado por</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='date_created' %}">
+                                <p>Fecha de creacion</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='solicitante' %}">
+                                <p>Solicitante</p>
+                          </a>
+                      </th>
+                      <th scope="col">
+                          <a href="{% url 'select_order' order='estado' %}">
+                                <p>Estado</p>
+                          </a>
+                      </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for tramite in tramites %}
+                    {% for tramite in tramites_list %}
                      {% if tramite.estado == "R" %}
                     <tr>
                       <td>

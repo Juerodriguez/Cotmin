@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 from django.db import IntegrityError
 from django.utils import timezone
-from django.http import HttpResponse
 from .form import TramiteForm
 from .models import Tramites
 
@@ -53,11 +55,16 @@ def completed_tramite(request, tramite_id):
         return redirect('manage_tramite')
 
 
-@login_required
-def manage_tramite(request):
-    tramites = Tramites.objects.all()
+class manage_tramite(LoginRequiredMixin, generic.ListView):
+    model = Tramites
+    template_name = 'manage_tramites.html'
+
+
+@login_required()
+def select_order(request, order):
+    tramites_list = Tramites.objects.all().order_by(order).reverse()
     return render(request, 'manage_tramites.html', {
-        'tramites': tramites
+        'tramites_list': tramites_list
     })
 
 
@@ -118,7 +125,10 @@ def delete_tramite(request, tramite_id):
 
 @login_required
 def search_tramite(request):
-    tramite = Tramites.objects.filter(pk=request.POST["number"]).first()
+    try:
+        tramite = Tramites.objects.get(pk=request.POST["number"])
+    except Tramites.DoesNotExist:
+        raise Http404("Este tramite no existe")
     return redirect('detail_tramite', tramite.number)
 
 
