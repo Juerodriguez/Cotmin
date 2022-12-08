@@ -1,6 +1,8 @@
 from django import forms
+from gestion.models import Tramites
 
 
-class ConsultForm(forms.Form):
-    number = forms.CharField(label="N° de Expediente", max_length=200)
-    tipo = forms.CharField(label="Tipo de tramite", max_length=200)
+class ConsultForm(forms.ModelForm):
+    class Meta:
+        model = Tramites
+        fields = ['number', 'tipo']

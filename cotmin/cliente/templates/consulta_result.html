@@ -47,19 +47,23 @@
 	</style>
 
 
-		<h2>BASE DE DATOS DE EXPEDIENTES</h2>
-		<div class="boxmodel">
-		<div class="boxmodel2">
+	<h2>BASE DE DATOS DE EXPEDIENTES</h2>
+	<div class="boxmodel">
+		<div class="container">
 
 			<h3>CONSULTA WEB</h3><br>
 
-			<div class="container">
-		  		<div class="tab-content">
-					{{tramite}}
+			<div class="card card-body my-2">
 
-		  		</div>
+        			<p>N° de Expediente: {{tramite.number}}</p>
+        			<p>Tipo de tramite: {{tramite.tipo}}</p>
+					<p>Responsable solicitante: {{tramite.solicitante}}</p>
+					<p>Tramite revisado: {{tramite.date_completed}}</p>
+					<p>Estado: {{tramite.estado}}</p>
+					<p>Nota: {{tramite.nota_by_admin}}</p>
+
 			</div>
-		<br>
+
 		<a href="index.html" class="btn btn-info"> VOLVER </a>
 		</div>
 	</div>
